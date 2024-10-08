@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Loja de Roupas Y2K</title>
+</head>
+<body>
+    <header>
+        <h1>Loja de Roupas </h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Início</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <div id="carrinho">
+            <button onclick="mostrarCarrinho()">Carrinho (<span id="totalItens">0</span>)</button>
+        </div>
+    </header>
+    
+    <main id="produtos">
+        <h2>Produtos em Destaque</h2>
+        <div class="produtos-container">
+            <div class="produto">
+                <img src="camisa.jpg" alt="Produto 1">
+                <h3>Camisa Estilosa</h3>
+                <p>Preço: R$ 99,90</p>
+                <button onclick="adicionarAoCarrinho(99.90)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="calça.jpg" alt="Produto 2">
+                <h3>Calça Casual</h3>
+                <p>Preço: R$ 149,90</p>
+                <button onclick="adicionarAoCarrinho(149.90)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="produto">
+                <img src="moletom.jpg" alt="Produto 3">
+                <h3>Jaqueta Elegante</h3>
+                <p>Preço: R$ 199,90</p>
+                <button onclick="adicionarAoCarrinho(199.90)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contato">
+        <p>&copy; Julia Santos</p>
+    </footer>
+
+    <div id="modalCarrinho" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharCarrinho()">&times;</span>
+            <h2>Carrinho de Compras</h2>
+            <p>Total de Itens: <span id="totalItensCarrinho">0</span></p>
+            <p>Valor Total: R$ <span id="valorTotal">0.00</span></p>
+        </div>
+    </div>
+
+    <script>
+        let totalItens = 0;
+        let valorTotal = 0.00;
+
+        function adicionarAoCarrinho(preco) {
+            totalItens++;
+            valorTotal += preco;
+            document.getElementById('totalItens').innerText = totalItens;
+            document.getElementById('totalItensCarrinho').innerText = totalItens;
+            document.getElementById('valorTotal').innerText = valorTotal.toFixed(2);
+        }
+
+        function mostrarCarrinho() {
+            document.getElementById('modalCarrinho').style.display = "block";
+        }
+
+        function fecharCarrinho() {
+            document.getElementById('modalCarrinho').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modalCarrinho')) {
+                fecharCarrinho();
+            }
+        }
+</script>
+        <script>
+        (function (d) {
+            var s = d.createElement("script");
+            s.setAttribute("data-account", "SEU_CÓDIGO_USERWAY_AQUI");
+            s.setAttribute("src", "https://cdn.userway.org/widget.js");
+            (d.body || d.head).appendChild(s);
+        })(document);
+    </script>
+    </script>
+</body>
+</html>
